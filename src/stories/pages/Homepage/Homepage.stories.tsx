@@ -11,5 +11,5 @@ const { meta, getStory } = getStoryFactory({
 export default meta;
 
 export const VueDefault = getStory({
-    "route": createMockRoute("home", undefined)
+    "route": createMockRoute("home", {})
 });

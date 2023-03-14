@@ -5,7 +5,11 @@ import { isStorybook } from "ui-dsfr/tools/isStorybook";
 import { z } from "zod";
 
 const routeDefs = {
-    "home": defineRoute("/"),
+    "home": defineRoute(
+        {
+            "profile": param.query.optional.string
+        },
+        () => "/"),
     "softwareCatalog": defineRoute(
         {
             "search": param.query.optional.string.default(""),

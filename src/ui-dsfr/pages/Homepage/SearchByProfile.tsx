@@ -1,13 +1,13 @@
-import { FormEvent, useState, useTransition } from "react";
-import { selectors, useCoreState } from "../../../core-dsfr";
-import { routes } from "../../routes";
-import { Select } from "@codegouvfr/react-dsfr/Select";
 import { fr } from "@codegouvfr/react-dsfr";
-import { AutocompleteInput } from "../../shared/AutocompleteInput";
-import { useTranslation } from "../../i18n";
-import { makeStyles } from "tss-react/dsfr";
+import { Select } from "@codegouvfr/react-dsfr/Select";
 import { declareComponentKeys } from "i18nifty";
+import { FormEvent, useEffect, useState, useTransition } from "react";
+import { makeStyles } from "tss-react/dsfr";
 import { Route } from "type-route";
+import { selectors, useCoreState, useCoreFunctions } from "core-dsfr";
+import { useTranslation } from "../../i18n";
+import { routes } from "../../routes";
+import { AutocompleteInput } from "../../shared/AutocompleteInput";
 type PageRoute = Route<any>;
 
 export type Props = {
@@ -34,12 +34,25 @@ export function SearchByProfile(props: Props) {
     const [, startTransition] = useTransition();
 
     const { allSillSoftwares } = useCoreState(
-        selectors.searchSoftwareByNameForm.allSillSoftwares
+        selectors.searchSoftwareByName.allSillSoftwares
     );
+
+    const { searchByProfile } = useCoreFunctions();
+
+    const { profile } = useCoreState(selectors.searchByProfile.profile)
 
     const onProfileChange = (value: Profile) => {
         setSelectedUserProfile(value);
     };
+
+    console.log(profile)
+
+    useEffect(() => {
+        searchByProfile.updateFilter({
+            "key": "profile",
+            "value": route.params.profile?.length ? route.params.profile : undefined
+        });
+    }, [route.params.profile]);
 
     const onSearchSubjectChange = (value: string) => {
         setSelectedSearchSubject(value);

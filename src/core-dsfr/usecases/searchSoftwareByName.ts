@@ -6,8 +6,6 @@ import { id } from "tsafe/id";
 import { assert } from "tsafe/assert";
 import type { SillApiClient } from "../ports/SillApiClient";
 
-export type WikidataEntry = SillApiClient.WikidataEntry;
-
 type State = State.NotInitialized | State.Ready;
 
 namespace State {
@@ -26,7 +24,7 @@ namespace State {
     };
 }
 
-export const name = "searchSoftwareByNameForm" as const;
+export const name = "searchSoftwareByName" as const;
 
 export const { reducer, actions } = createSlice({
     name,
