@@ -74,7 +74,8 @@ const {
                 "allFeminine": "All",
                 "loading": "Loading...",
                 "no result": "No result",
-                "search": "Search"
+                "search": "Search",
+                "validate": "Validate"
             },
             "Homepage": {
                 "title": (
@@ -469,7 +470,8 @@ const {
                 "allFeminine": "Toutes",
                 "loading": "Chargement...",
                 "no result": "Aucun résultat",
-                "search": "Rechercher"
+                "search": "Rechercher",
+                "validate": "Valider"
             },
             "Homepage": {
                 "title": (

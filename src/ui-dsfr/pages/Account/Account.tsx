@@ -11,6 +11,7 @@ import { useCoreFunctions, useCoreState } from "core-dsfr";
 import { Input } from "@codegouvfr/react-dsfr/Input";
 import { z } from "zod";
 import { AutocompleteInput } from "ui-dsfr/shared/AutocompleteInput";
+import { Button } from "@codegouvfr/react-dsfr/Button";
 
 Account.routeGroup = createGroup([routes.account]);
 type PageRoute = Route<typeof Account.routeGroup>;
@@ -31,6 +32,7 @@ export function Account(props: Props) {
 
     const { classes, cx } = useStyles();
     const { t } = useTranslation({ Account });
+    const { t: tCommon } = useTranslation({ App: null });
 
     useEffect(() => {
         triggerFetchAgencyNames();
@@ -92,11 +94,16 @@ export function Account(props: Props) {
         return { allowedEmailRegexp };
     })();
 
-    const { value: agencyName } = useCoreState(
+    const { value: agencyName, isBeingUpdated: isAgencyNameBeingUpdated } = useCoreState(
         state => state.userAuthentication.agencyName
     );
 
-    const { value: email } = useCoreState(state => state.userAuthentication.email);
+    const { value: email, isBeingUpdated: isEmailBeingUpdated } = useCoreState(
+        state => state.userAuthentication.email
+    );
+
+    const [tempEmail, setTempEmail] = useState<string>(email);
+    const [tempAgencyName, setTempAgencyName] = useState<string>(agencyName);
 
     const keycloakAccountConfigurationUrl =
         userAuthentication.getKeycloakAccountConfigurationUrl();
@@ -139,21 +146,28 @@ export function Account(props: Props) {
                 <Input
                     label={t("mail")}
                     nativeInputProps={{
-                        onChange: event =>
-                            onRequestUpdateFieldFactory("email", event.target.value),
-                        value: email
+                        "onChange": event => setTempEmail(event.target.value),
+                        "value": tempEmail
                     }}
-                    state={isValidEmail(email).isValidValue ? undefined : "error"}
-                    stateRelatedMessage={isValidEmail(email).message}
+                    state={isValidEmail(tempEmail).isValidValue ? undefined : "error"}
+                    stateRelatedMessage={isValidEmail(tempEmail).message}
+                    disabled={isEmailBeingUpdated}
                 />
+                <Button
+                    onClick={() => {
+                        onRequestUpdateFieldFactory("email", tempEmail);
+                        setTempEmail(email);
+                    }}
+                >
+                    {tCommon("validate")}
+                </Button>
             </div>
             <div>
                 <AutocompleteInput
+                    className={"fr-input-group"}
                     options={agencyNames}
                     value={agencyName}
-                    onValueChange={value =>
-                        onRequestUpdateFieldFactory("agencyName", value ?? "")
-                    }
+                    onValueChange={value => setTempAgencyName(value ?? "")}
                     getOptionLabel={entry => entry}
                     renderOption={(liProps, entry) => (
                         <li {...liProps}>
@@ -162,9 +176,18 @@ export function Account(props: Props) {
                     )}
                     noOptionText="No result"
                     dsfrInputProps={{
-                        "label": t("organization")
+                        "label": t("organization"),
+                        "disabled": isAgencyNameBeingUpdated
                     }}
                 />
+                <Button
+                    onClick={() => {
+                        onRequestUpdateFieldFactory("agencyName", tempAgencyName);
+                        setTempAgencyName(agencyName);
+                    }}
+                >
+                    {tCommon("validate")}
+                </Button>
             </div>
             {keycloakAccountConfigurationUrl !== undefined && (
                 <a href={keycloakAccountConfigurationUrl} target="_blank">
