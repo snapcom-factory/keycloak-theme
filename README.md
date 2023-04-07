@@ -2,13 +2,24 @@
     <i><a href="https://magnify.prod.webconf.snapcom.fr/">https://magnify.prod.webconf.snapcom.fr/</a> frontend</i>
     <br>
 </p>
+
 ## Install and Usage (using vscode)
+
 First of all you need to install yarn
 
 Once the repository is cloned, you can install dependencies using the command :
-'''
+```bash
 yarn
-'''
+```
+
+>⚠️ Once the dependencies are installed, sometimes vscode does not take it into account,
+> you can close VScode and reopen it. All the alerts should disappear
+
+You can now change the code as you wish. When finished, you can build the project with the command :
+```bash
+yarn build-keycloak-theme
+```
+
 
 ## Screenshots
 
