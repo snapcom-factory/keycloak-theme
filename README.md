@@ -1,16 +1,14 @@
 <p align="center">
-    <i><a href="https://sill.etalab.gouv.fr">sill.etalab.gouv.fr</a> frontend</i>
+    <i><a href="https://magnify.prod.webconf.snapcom.fr/">https://magnify.prod.webconf.snapcom.fr/</a> frontend</i>
     <br>
-    <br>
-    <a href="https://github.com/etalab/sill-web/actions">
-      <img src="https://github.com/etalab/sill-web/workflows/ci/badge.svg?branch=main">
-    </a>
-    <a href="https://github.com/etalab/sill-web/blob/main/LICENSE">
-      <img src="https://img.shields.io/npm/l/sill-api">
-    </a>
-    </br>
-    <a href="https://etalab-2.gitbook.io/sill/">Documentation</a>
 </p>
+## Install and Usage (using vscode)
+First of all you need to install yarn
+
+Once the repository is cloned, you can install dependencies using the command :
+'''
+yarn
+'''
 
 ## Screenshots
 
