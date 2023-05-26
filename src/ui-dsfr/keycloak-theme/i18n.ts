@@ -9,8 +9,8 @@ export function useI18n(props: Props) {
         "extraMessages": {
             "en": {
                 "brand": "SILL",
-                "service title": "Socle interministériel de logiciels libres",
-                "home title": "Home - Socle interministériel de logiciels libres",
+                "service title": "Magnify",
+                "home title": "Home - Magnify",
                 "back": "Back",
                 "alphanumericalCharsOnly": "Only alphanumerical characters",
                 "administrativeEmail": "Administrative Email",
@@ -26,8 +26,8 @@ export function useI18n(props: Props) {
             "fr": {
                 /* spell-checker: disable */
                 "brand": "SILL",
-                "service title": "Socle interministériel de logiciels libres",
-                "home title": "Acceuil - Socle interministériel de logiciels libres",
+                "service title": "Magnify",
+                "home title": "Acceuil - Magnify",
                 "back": "Retour",
                 "alphanumericalCharsOnly": "Caractère alphanumérique uniquement",
                 "administrativeEmail": "Email administratif",

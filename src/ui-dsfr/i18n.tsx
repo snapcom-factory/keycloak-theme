@@ -416,8 +416,8 @@ const {
             },
             "Header": {
                 "brand": "SILL",
-                "home title": "Home - Socle interministériel de logiciels libres",
-                "title": "Socle interministériel de logiciels libres",
+                "home title": "Home - Magnify",
+                "title": "Magnify",
                 "navigation welcome": "Welcome to the SILL",
                 "navigation catalog": "Software catalog",
                 "navigation add software": "Add software or instance",
@@ -431,7 +431,7 @@ const {
             },
             "Footer": {
                 "brand": "DINUM",
-                "home title": "Home - Socle interministériel de logiciels libres",
+                "home title": "Home - Magnify",
                 "description": "Texte descriptif footer à modifier"
             },
             "UserProfileCommons": {
@@ -823,8 +823,8 @@ const {
             },
             "Header": {
                 "brand": "SILL",
-                "home title": "Accueil - Socle interministériel de logiciels libres",
-                "title": "Socle interministériel de logiciels libres",
+                "home title": "Accueil - Magnify",
+                "title": "Magnify",
                 "navigation welcome": "Bienvenue sur le SILL",
                 "navigation catalog": "Catalogue de logiciel",
                 "navigation add software": "Ajouter un logiciel ou une instance",
@@ -838,7 +838,7 @@ const {
             },
             "Footer": {
                 "brand": "DINUM",
-                "home title": "Acceuil - Socle interministériel de logiciels libres",
+                "home title": "Acceuil - Magnify",
                 "description": "Texte descriptif footer à modifier"
             },
             "UserProfileCommons": {
